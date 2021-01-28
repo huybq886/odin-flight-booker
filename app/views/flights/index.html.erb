@@ -1,0 +1,35 @@
+<section class="hero is-fullheight is-light is-bold">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns is-8 is-variable ">
+        <div class="column is-half has-text-left">
+
+          <%= link_to root_path do %>
+            <h1 class="title">
+              Flight Booker
+            </h1>
+          <% end %>
+          <h3 class="subtitle">
+            Book your Flight!
+          </h3>
+
+        </div>
+
+        <div class="column is-half has-text-left">
+          <%= render "search_form" %>
+        </div>
+
+        <% unless @available_flights.nil? %>
+          <% if @available_flights.empty? %>
+            <p> No flight available! </p>
+          <% else %>
+            <%= render "search_results_form" %>
+          <% end %>
+        <% end %>
+
+      </div>
+
+
+    </div>
+  </div>
+</section>

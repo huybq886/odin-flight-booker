@@ -1,0 +1,25 @@
+<%= form_with url: "bookings/new", method: "get", local: true do |f| %>
+  <% @available_flights.each do |flight| %>
+    <% departure = flight.from_airport.code %>
+    <% arrival = flight.to_airport.code %>
+    <% departure_date = flight.scheduled_on.strftime('%B %d, %Y') %>
+    <% departure_time = flight.scheduled_on.strftime('%H:%M') %>
+    <% arrival_time = (flight.scheduled_on + (flight.duration/60).to_i.hours).strftime('%H:%M') %>
+
+    <p>
+      <div class="column is-narrow has-text-centered">
+        <%= radio_button_tag :flight_id, flight.id, options = {checked: true} %>
+      </div>
+
+      <div class="column is-three-fifths">
+        FROM: <%= departure %> || TO: <%= arrival %><br/>
+        DEPART AT: <%= departure_time %> || ARRIVE AT: <%= arrival_time %><br/>
+        ON: <%= departure_date %>
+      </div>
+    </p>
+
+  <% end %>
+
+  <%= hidden_field_tag :pax, params[:pax] %>
+  <%= f.submit "Choose this Flight", data: { disable_with: "Processing..." }, class: "button is-dark is-outlined" %>
+<% end %>
