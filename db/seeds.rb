@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# tables = ActiveRecord::Base.connection.tables - ['schema_migrations']
+# # In PostgreSQL, it does not do this automatically. You can use TRUNCATE TABLE table RESTART IDENTITY;
+# # To automatically truncate all tables that have foreign-key references to any of the named tables use CASCADE.
+# # tables.each do |table|
+# #   ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
+# # end
+# tables.each do |table|
+#   ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY")
+# end
+
 airports = Airport.create([
   { code: 'SFO' },
   { code: 'NYC' }

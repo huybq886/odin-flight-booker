@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_01_27_174603) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "airports", force: :cascade do |t|
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
@@ -35,9 +38,9 @@ ActiveRecord::Schema.define(version: 2021_01_27_174603) do
   end
 
   create_table "passengers", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.integer "booking_id"
+    t.text "name"
+    t.text "email"
+    t.bigint "booking_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["booking_id"], name: "index_passengers_on_booking_id"

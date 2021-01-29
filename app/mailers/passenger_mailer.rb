@@ -1,5 +1,5 @@
 class PassengerMailer < ApplicationMailer
-  default from: 'thenks@example.com'
+  default from: ENV['GMAIL_USERNAME']
 
   def thankyou_email(passenger)
     @passenger = passenger
