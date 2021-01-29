@@ -1,0 +1,15 @@
+Dear <%= @passenger.name %>,
+===========================
+
+Thank you for trusting us. This is to confirm that you have successfully booked the following flight:
+
+   <%= @departure_date %>
+  Departure   Arrival  
+ ----------- --------- 
+  <%= @departure %>         <%= @arrival %>      
+  <%= @departure_time %>       <%= @arrival_time %>   
+
+YOUR BOOKING NUMBER (PNR) IS ODNBKNG<%= @passenger.booking.id %>
+Ticket Number: <%= 696900 + @flight_id %>
+
+We look forward to welcoming you on board!

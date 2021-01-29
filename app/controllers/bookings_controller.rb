@@ -20,6 +20,11 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash.notice = 'Booking successfully completed!'
+
+      @booking.passengers.each do |passenger|
+        PassengerMailer.thankyou_email(passenger).deliver_now
+      end
+
       redirect_to booking_path(@booking)
     else
       flash.alert = 'Booking not complete =('

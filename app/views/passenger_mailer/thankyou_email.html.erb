@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Dear <%= @passenger.name %>,</h1>
+
+    <p>Thank you for trusting us. This email is to confirm that you have successfully booked the following flight.</p>
+
+    <h4><%= @departure_date %></h4>
+
+    <table style="width:25%">
+      <tr style="text-align: left">
+        <th>Departure</th>
+        <th>Arrival</th>
+      </tr>
+      <tr>
+        <td><%= @departure %></td>
+        <td><%= @arrival %></td>
+      </tr>
+      <tr>
+        <td><%= @departure_time %></td>
+        <td><%= @arrival_time %></td>
+      </tr>
+    </table> 
+
+    <p>YOUR BOOKING NUMBER (PNR) IS <strong>LMAOEZ<%= @passenger.booking.id %></strong></p>
+    <p>Ticket Number: <b><%= 696900 + @flight_id %></b></p>
+
+    <h3>We look forward to welcoming you on board!</h3>
+  </body>
+</html>
